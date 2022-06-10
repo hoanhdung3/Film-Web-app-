@@ -1,0 +1,12 @@
+{% extends "layout_home.html" %}
+{% block content %}
+    <h1>Ket qua tim kiem cho {{ the_loai }}</h1>
+    <div class="Blockbusters">
+        <h2>PHIM BOM TẤN</h2>
+        <ul class="blockbusters__track">
+            {% for movie in movies -%}
+            <li><a href="{{ url_for('movie', movie_id=movie.id) }}"><img src="{{ url_for('static', filename='movie_pics/' + movie.image) }}" alt=""><div class="film-title">{{ movie.movie_vn }}</div></a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock content%}

@@ -1,0 +1,422 @@
+@charset 'UTF-8';
+
+body{
+    margin: 0px;
+    background: url('images-xemphim/phim-tat-ca-chung-ta-deu-chet-all-of-us-are-dead-6.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -215px;
+}
+
+
+header{
+    width: 100vw;
+    background-color: transparent;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    z-index: 10;
+    top: 0px;
+   
+    
+}
+
+.header__logo{
+    margin-left: 10px;
+}
+
+.header__logo a{
+    margin-right: 20px;
+    font-size: 20px;
+    font-family: 'Press Start 2P', cursive;
+    color: #C41F20;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.header__nav-list ul{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    
+}
+
+.header__nav-list ul li{
+    list-style: none;
+    padding: 0px 10px;
+    line-height: 50px;
+   
+}
+
+.header__nav-list ul li:hover{
+    background-color: #264666;
+}
+
+.header__nav-list ul li a{
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-family: #091C2D;
+}
+
+.header__nav-list ul li:hover a{
+    color: #378BCA;
+}
+
+.user{
+    display: inline-flex;
+    position: absolute;
+    right: 35px;
+    height: 48px;
+    align-items: center;
+    
+}
+
+.user i{
+    color: whitesmoke;
+    padding-top: 3px;
+    margin-right: 5px;
+    font-size: 20px;
+    
+}
+
+.user .username{
+    color: whitesmoke;
+    font-size: 18px;
+    font-family: monospace;
+}
+
+.user .username .sub-menu{
+    margin: 0px;
+    padding: 0px;
+    background-color: #091C2D;
+    border: solid 2px #23374b;
+    position: absolute;
+    width: 190px;
+    right: 0px;
+    top: 48px;
+    display: none;
+}
+
+.user:hover .username .sub-menu{
+    display: block;
+}
+
+.user .username .sub-menu li{
+    list-style: none;
+    padding: 5px;
+}
+
+.user .username .sub-menu li:hover{
+    background-color: #153d61;
+}
+
+.user .username .sub-menu li a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 17px;
+}
+
+.has-child::after{
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f107";
+    color: whitesmoke;
+    padding-top: 3px;
+    margin-left: 3px;
+}
+
+.header__client{
+    position: absolute;
+    right: 20px;
+    background-color: #C41F20;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    padding: 5px;
+    outline: none;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.header__client:hover{
+    background-color: #b11d1d;
+    
+}
+
+
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+   
+}
+
+.curtain1{
+    position: absolute;
+    background-color: #212529;
+    opacity: 0.8;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+}
+
+.wrapper-content{
+    top: 100px;
+    display: flex;
+    z-index: 5;
+    position: relative;
+    width: 1250px;
+    margin: 0px auto;
+    margin-top: 100px;
+    
+}
+
+.watching{
+    margin-right: 100px;
+ 
+}
+
+.watching__poster img{
+    width: 300px;
+    height: auto;
+}
+
+.watching__watch{
+    width: 300px;
+    height: 45px;
+    background-color: #c62532;
+    border: 0px;
+    border-radius: 3px;
+    margin-top: 15px;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+} 
+
+.watching__watch:hover{
+    background-color: #e64350;
+}
+
+.profile{
+    height: 600px;
+}
+
+.profile h2{
+    color: white;
+    font-family: monospace;
+    font-size: 30px;
+    margin: 10px 0px;
+
+}
+
+.profile h3{
+    color: rgb(138, 138, 138);
+    font-size: 25px;
+}
+
+.profile h3 a{
+    color: #0e2996;
+    text-decoration: none;
+
+}
+
+.profile__restriction{
+    width: 30px;
+    height: 20px;
+    border-radius: 3px;
+    text-align: center;
+    background-color: #b82929;
+}
+
+.profile__IMDb{
+    display: flex;
+    margin: 10px 0px;
+}
+
+
+.IMDb{
+    background-color:  rgb(255, 193, 7);
+    padding: 2px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    height: 22px;
+}
+
+.profile__IMDb .point{
+    color: white;
+    font-size: 23px;
+    margin-left: 10px;
+    padding-bottom: 0px;
+}
+
+.profile__title{
+    display: flex;
+    justify-content: space-between;
+    width: 950px;
+}
+
+.profile__title-nav button{
+    background-color: #2366d1;
+    width: 140px;
+    height: 45px;
+    font-size: 22px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 0px;
+    margin-right: 10px;
+}
+
+.profile__title-nav button:hover{
+    background-color: #1c359c;
+}
+
+.profile__title-nav .fa-facebook-square{
+    margin-right: 10px;
+}
+
+.profile__title-nav .gallery{
+    width: 165px;
+    background-color: transparent;
+    border: solid 2px black;
+}
+
+.profile__title-nav .gallery:hover{
+    width: 165px;
+    background-color: transparent;
+    border: solid 2px rgb(175, 71, 71);
+}
+
+
+.profile__title-nav .fa-plus{
+    margin-right: 10px;
+}
+
+.profile__title-category{
+    display: flex;
+
+}
+
+.profile__title-category-nav{
+    margin-right: 10px;
+    border: solid 1px rgb(255, 255, 255);
+    width: auto;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.profile__title-category-nav:hover{
+    background-color: #ecedef;
+    color: #091C2D;
+}
+
+.profile-information{
+    margin-top: 50px;
+    position: relative;
+}
+
+.profile-information .origin-info{
+    margin: 10px 0px;
+    font-size: 20px;
+    color: white;
+}
+
+.profile-information .origin-info div{
+    display: inline-block;
+    text-transform: uppercase;
+    color: #7a7a7a;
+    width: 150px;
+    
+}
+
+.profile-information .brief{
+    color: #b5b5b5;
+    margin: 30px 0px;
+    font-size: 20px;
+}
+
+.profile-information .cast{
+    overflow: hidden;
+}
+
+.profile-information .cast h4{
+    color: whitesmoke;
+    font-size: 25px;
+    margin-bottom: 50px;
+}
+
+.profile-information .cast .track{
+    padding: 0px;
+    display: flex; 
+    max-width: 950px;
+    height: 190px;
+    position: relative;
+    transition: 0.5s ease-in;
+    /* border: solid 1px orange; */
+}
+
+.profile-information .cast .track li{
+    list-style: none;
+    display: inline-block;
+    height: 140px;
+    width: 140px;
+    border-radius: 140px;
+    overflow: hidden;
+    position: absolute;
+    border: solid 1px orange;
+    
+}
+
+.profile-information .cast .track li a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 18px;
+    
+}
+
+.profile-information .cast .track li img{
+    border: solid 1px orange;
+    width: 140px;
+}
+
+.profile-information .cast-buttons button{
+    position: absolute;
+    top: 53%;
+    width: 35px;
+    height: 25px;
+    right: 5%;
+    border: 0px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.profile-information .cast-buttons button:hover{
+    box-shadow: 0px 0px 3px white;
+}
+
+.profile-information .cast-buttons button i{
+    color: white;
+}
+
+.profile-information .cast-buttons .right-button{
+    right: .5%;
+}
+
+.curtain2{
+    background-color: #06121E;
+    position: absolute;
+    width: 100vw;
+    height: 500px;
+    top: 68%;
+}

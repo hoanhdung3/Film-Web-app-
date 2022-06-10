@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='private-page.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="curtain"></div>
+    <!-- ===================Header========================= -->
+        <header class="header">
+            <div class="header__logo"><a href="{{url_for('home')}}">Thang7</a></div>
+
+            <div class="header__nav">
+                <div class="header__nav-search"></div>
+
+                <div class="header__nav-list">
+                    <ul>
+                        <li><a href="">Phim hot</a></li>
+                        <li><a href="">Phim lẻ</a></li>
+                        <li><a href="">Phim bộ</a></li>
+                        <li><a href="">Phim mới</a></li>
+                        <li><a href="">About us</a></li>
+                    </ul>
+                </div>
+            </div>
+            {% if current_user.is_authenticated %}
+            <div class="user">
+                <i class="fa-solid fa-circle-user"></i>
+                <div class="username">{{current_user.username}}
+                    <ul class="sub-menu">
+                        {% if current_user.username == 'admin'%}
+                        <li><a href="{{ url_for('upload') }}">Upload</a></li>
+                        {% endif %}
+                        <li><a href="{{ url_for('private')}}">Tài khoản của tôi</a></li>
+                        <li><a href="">Trạng thái</a></li>
+                        <li><a href="{{ url_for('logout') }}">Đăng xuất</a></li>
+                    </ul>
+                </div>
+            </div>
+            {% else %}
+            <a class="header__client" href="{{url_for('login')}}">
+                Đăng nhập
+            </a>
+            {% endif %}
+
+            <!-- <div class="header__client" onclick="window.location='Data/login/index.html'">
+                Đăng nhập
+            </div> -->
+        </header>
+
+    <!-- =====================end of header================== -->
+
+
+    <!-- =======================Begining of content================================ -->
+    <form method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="wrapper-content">
+            <section class="user-image">
+                <img src="{{ image_file }}" alt="my_avatar">
+            </section>
+
+            <section class="private-information">
+                <form action="">
+                    <div class="username">
+                        {{ form.username.label(class="form-control-label") }}
+                {% if form.username.errors %}
+                    {{ form.username(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.username(class="form-control form-control-lg") }}
+                {% endif %}
+                    </div>
+                    <div class="Email">
+                        {{ form.email.label(class="form-control-label") }}
+                {% if form.email.errors %}
+                    {{ form.email(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="form-control form-control-lg") }}
+                {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.picture.label() }}
+                        {{ form.picture(class="form-control-file") }}
+                        {% if form.picture.errors %}
+                            {% for error in form.picture.errors %}
+                                <span class="text-danger">{{ error }}</span><br>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-info") }}
+                    </div>
+        
+                    <div class="account-status">Status: <!--VIP or normal account--></div>
+                </form>
+            </section>
+        </div>
+        </form>
+        
+    <!-- =================end of content========================== -->
+    <!--======================= Navigation buttons ===========================-->
+    <button class="button button-home" onclick="window.location='http://127.0.0.1:5000/'">Home</button>
+     <!--======================= End of Navigation buttons ===========================-->
+
+    </div>
+</body>
+</html>

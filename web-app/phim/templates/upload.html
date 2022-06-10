@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='upload.css')}}" />
+    <script type="text/javascript" src="{{url_for('static', filename='app.js')}}"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css
+" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="ano
+nymous"> -->
+    <title>Phimthang7.net</title>
+</head>
+<body onload="alreadyloaded()">
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__logo"><a href="{{url_for('home')}}">Thang7</a></div>
+
+            <div class="header__nav">
+                <div class="header__nav-search"></div>
+
+                <div class="header__nav-list">
+                    <ul>
+                        <li><a href="">Phim hot</a></li>
+                        <li><a href="">Phim lẻ</a></li>
+                        <li><a href="">Phim bộ</a></li>
+                        <li><a href="">Phim mới</a></li>
+                        <li><a href="">About us</a></li>
+                    </ul>
+                </div>
+            </div>
+            {% if current_user.is_authenticated %}
+            <div class="user">
+                <i class="fa-solid fa-circle-user"></i>
+                <div class="username">{{current_user.username}}
+                    <ul class="sub-menu">
+                        {% if current_user.username == 'admin'%}
+                        <li><a href="{{ url_for('upload') }}">Upload</a></li>
+                        {% endif %}
+                        <li><a href="">Tài khoản của tôi</a></li>
+                        <li><a href="">Trạng thái</a></li>
+                        <li><a href="{{ url_for('logout') }}">Đăng xuất</a></li>
+                    </ul>
+                </div>
+            </div>
+            {% else %}
+            <a class="header__client" href="{{url_for('login')}}">
+                Đăng nhập
+            </a>
+            {% endif %}
+        </header>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+        
+          <div class="content-section">
+            <form class="post" method="POST" action="" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group form-group-box">
+                    <legend class="border-bottom mb-3">Upload</legend>
+                    <div class="form-group">
+                        {{ form.movie_eng.label(class="form-control-label") }}
+                        {% if form.movie_eng.errors %}
+                            {{ form.movie_eng(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.movie_eng.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.movie_eng(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.movie_vn.label(class="form-control-label") }}
+                        {% if form.movie_vn.errors %}
+                            {{ form.movie_vn(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.movie_vn.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.movie_vn(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.year.label(class="form-control-label") }}
+                        {% if form.year.errors %}
+                            {{ form.year(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.year.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.year(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.imdb.label(class="form-control-label") }}
+                        {% if form.imdb.errors %}
+                            {{ form.imdb(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.imdb.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.imdb(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.summary.label(class="form-control-label") }}
+                        {% if form.summary.errors %}
+                            {{ form.summary(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.summary.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.summary(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.author.label(class="form-control-label") }}
+                        {% if form.author.errors %}
+                            {{ form.author(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.author.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.author(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.nation.label(class="form-control-label") }}
+                        {% if form.nation.errors %}
+                            {{ form.nation(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.nation.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.nation(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.link.label(class="form-control-label") }}
+                        {% if form.link.errors %}
+                            {{ form.link(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.link.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.link(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.tl.label(class="form-control-label") }}
+                        {% if form.tl.errors %}
+                            {{ form.tl(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.tl.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.tl(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.image.label() }}
+                        {{ form.image(class="form-control-file") }}
+                        {% if form.image.errors %}
+                            {% for error in form.image.errors %}
+                                <span class="text-danger">{{ error }}</span><br>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    {{ form.submit(class="button login-button") }}
+                </div>
+            </form>
+        </div>
+        
+        <button class="button button-home" onclick="window.location='http://localhost:5000/'">HOME</button>
+</body>
+</html>

@@ -1,0 +1,273 @@
+@charset 'UTF-8';
+
+
+body{
+    margin: 0px;
+    background: url(images/background-body.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* ===========================header===================================== */
+header{
+    width: 100vw;
+    background-color: transparent;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    z-index: 5;
+    top: 0px;
+    
+}
+
+.header__logo{
+    margin-left: 10px;
+}
+
+.header__logo a{
+    margin-right: 20px;
+    font-size: 20px;
+    font-family: 'Press Start 2P', cursive;
+    color: #C41F20;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* ================================  beginning of side-bar==================================== */
+
+.header__side-bar{   /*beginning of side-bar*/
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: #0e1b29;
+    width: 290px;
+    height: 100vh;
+    display: none;
+}
+
+.header__side-bar:hover{
+    display: block;
+}
+
+.header__side-bar .user{
+    width: 150px;
+    margin: 50px auto;
+    
+}
+
+.header__side-bar .header__client{
+    margin-right: 45px;
+    margin-top: 30px;
+    width: 150px;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+}
+
+.header__side-bar .user .fa-circle-user{
+    font-size: 50px;
+}
+
+.side-bar__username{
+    font-size: 25px;
+    color: white;
+}
+
+.header__side-bar ul{
+    margin: 0px;
+    margin-top: 200px;
+    padding: 0px;
+    width: 100%;
+    
+}
+
+.header__side-bar ul li{
+    display: block;
+    list-style: none;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+   
+}
+
+.header__side-bar ul li:hover{
+    background-color: whitesmoke;
+}
+
+.header__side-bar ul li:hover a{
+    color: black;
+}
+
+.header__side-bar ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-family: monospace;
+    text-indent: 20px;
+}  /*end of side-bar*/
+
+.header__logo:active .header__side-bar{
+    display: block;
+}
+/* ================================ end of side-bar ===================================== */
+
+.header__nav-list ul{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    
+}
+
+.header__nav-list ul li{
+    list-style: none;
+    padding: 0px 10px;
+    line-height: 50px;
+   
+}
+
+.header__nav-list ul li:hover{
+    background-color: #264666;
+}
+
+.header__nav-list ul li a{
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-family: #091C2D;
+}
+
+.header__nav-list ul li:hover a{
+    color: #378BCA;
+}
+/* ================================ beginning of user ===================================== */
+
+.user{
+    display: inline-flex;
+    position: absolute;
+    right: 35px;
+    height: 48px;
+    align-items: center;
+    
+}
+
+.user i{
+    color: whitesmoke;
+    padding-top: 3px;
+    margin-right: 5px;
+    font-size: 20px;
+    
+}
+
+.user .username{
+    color: whitesmoke;
+    font-size: 18px;
+    font-family: monospace;
+}
+
+.user .username .sub-menu{
+    margin: 0px;
+    padding: 0px;
+    background-color: #091C2D;
+    border: solid 2px #23374b;
+    position: absolute;
+    width: 190px;
+    right: 0px;
+    top: 48px;
+    display: none;
+}
+
+.user:hover .username .sub-menu{
+    display: block;
+}
+
+.user .username .sub-menu li{
+    list-style: none;
+    padding: 5px;
+}
+
+.user .username .sub-menu li:hover{
+    background-color: #153d61;
+}
+
+.user .username .sub-menu li a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 17px;
+}
+
+.has-child::after{
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900; 
+    content: "\f107";
+    color: whitesmoke;
+    padding-top: 3px;
+    margin-left: 3px;
+}
+
+.header__client{
+    position: absolute;
+    right: 20px;
+    background-color: #C41F20;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    padding: 5px;
+    outline: none;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.header__client:hover{
+    background-color: #b11d1d;
+    
+}
+/* ================================ end of user ===================================== */
+/* ===========================end of header===================================== */
+
+/* ===============================iframe============================ */
+iframe{
+    width: 650px;
+    height: 500px;  
+}
+/* ===============================end of iframe============================ */
+
+
+/* =========================button=========================== */
+.btn{
+    width: 80px;
+    height: 40px;
+    background-color: black;
+    opacity: 0.8;
+    position: absolute;
+    right: 150px;
+    bottom: 100px;
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.btn:hover{
+    box-shadow: 0px 0px 3px white;
+}
+
+.back{
+    right: 250px;
+}
+/* =========================end of button=========================== */
+
+
+
+

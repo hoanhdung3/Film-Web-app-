@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='xemphim.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='xemphim.js')}}"></script>
+    <title>All of us are dead</title>
+</head>
+<body onload="alreadyloaded()">
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__logo"><a href="http://127.0.0.1:5000/">Thang7</a></div>
+
+            <div class="header__nav">
+                <div class="header__nav-search"></div>
+
+                <div class="header__nav-list">
+                    <ul>
+                        <li><a href="">Phim hot</a></li>
+                        <li><a href="">Phim lẻ</a></li>
+                        <li><a href="">Phim bộ</a></li>
+                        <li><a href="">Phim mới</a></li>
+                        <li><a href="">About us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            {% if current_user.is_authenticated %}
+            <div class="user">
+                <i class="fa-solid fa-circle-user"></i>
+                <div class="username">{{current_user.username}}
+                    <ul class="sub-menu">
+                        {% if current_user.username == 'admin'%}
+                        <li><a href="{{ url_for('upload') }}">Upload</a></li>
+                        {% endif %}
+                        <li><a href="{{ url_for('private')}}">Tài khoản của tôi</a></li>
+                        <li><a href="">Trạng thái</a></li>
+                        <li><a href="{{ url_for('logout') }}">Đăng xuất</a></li>
+                    </ul>
+                </div>
+            </div>
+            {% else %}
+            <a class="header__client" href="{{url_for('login')}}">
+                Đăng nhập
+            </a>
+            {% endif %}
+
+            <!-- <div class="header__client" onclick="window.location='Data/login/index.html'">
+                Đăng nhập
+            </div> -->
+        </header>
+
+        <div class="curtain1"></div>
+
+        <div class="wrapper-content">
+            <div class="watching">
+                <div class="watching__poster"><img src="{{ url_for('static', filename='movie_pics/' + movie.image) }}" alt=""></div>
+                <a href="{{url_for('watch_film', movie_id=movie.id)}}"><button class="watching__watch">Xem phim</button></a>
+
+
+            </div>
+
+            <div class="profile">
+                <h2>{{ movie.movie_eng }}</h2>
+                <h3>{{ movie.movie_vn }} (<a href="#">{{ movie.year }}</a>)</h3>
+
+                <div class="profile__restriction">16+</div>
+
+                <div class="profile__IMDb">
+                    <div class="IMDb">IMDb</div>
+                    
+                    <div class="point">{{ movie.imdb }}</div>
+                </div>
+
+                <div class="profile__title">
+                    <div class="profile__title-nav">
+                        <button class="share"><i class="fa-brands fa-facebook-square"></i>Chia sẻ</button>
+
+                        <button class="gallery"><i class="fa-solid fa-plus"></i>Bộ sưu tập</button>
+                    </div>
+
+                    <div class="profile__title-category">
+                        <div class="profile__title-category-nav  profile__title-category-action">Hành động</div>
+
+                        <div class="profile__title-category-nav profile__title-category-horror">Kinh dị</div>
+
+                        <div class="profile__title-category-nav profile__title-category-school">Học đường</div>
+
+                    </div>
+                </div>
+                
+                <div class="profile-information">
+                    <div class="origin">
+                        <div class="origin-info founder"><div>SÁNG LẬP</div>{{ movie.author }}</div>
+                        <div class="origin-info country"><div>QUỐC GIA</div>{{ movie.nation }}</div>
+                        <div class="origin-info premiere"><div>KHỞI CHIẾU </div> 1/28/2022</div>
+                    </div>
+
+                    <div class="brief">{{ movie.summary }}</div>
+
+
+                    <div class="cast">
+                        <h4>Diễn viên</h4>
+
+                        <div class="cast-buttons">
+                            <button class="button left-button"><i class="fa-solid fa-angle-left"></i></button>
+                            <button class="button right-button"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+
+                        <ul class="track">
+                            <li class="first-slide"><a href="https://xemphim.club/person/park-ji-hu~130299"><img src="../static/images-xemphim//cho-yi-hyun.jpg" alt="">Cho Yi Hyun</a></li>
+                            <li><a href="https://xemphim.club/person/park-ji-hu~130299"><img src="../static/images-xemphim/park-ji-hyun.jpg" alt=""></a></li>
+                            <li><a href="https://xemphim.club/person/kim-bo-yoon~150573"><img src="../static/images-xemphim//Kim-Bo-yoon.jpg" alt=""></a></li>
+                            <li><a href="https://xemphim.club/person/lee-eun-saem~146469"><img src="../static/images-xemphim/lee-Eun-saem.jpg" alt=""></a></li>
+                            <li><a href="https://xemphim.club/person/kim-byung-chul~83002"><img src="../static/images-xemphim/kim-byung-chul.jpg" alt=""></a></li>
+                            <li><a href="https://xemphim.club/person/lee-you-mi~39194"><img src="../static/images-xemphim/lee-you=mi.jpg" alt=""></a></li>
+                            <li><a href="https://xemphim.club/person/park-solomon~150571"><img src="../static/images-xemphim/park-solomon.jpg" alt=""></a></li>
+                            <li><a href="https://xemphim.club/person/yoon-chan-young~27572"><img src="../static/images-xemphim/yoon-chan-young.jpg" alt=""></a></li>
+                            <li><a href="https://xemphim.club/person/yoo-in-soo~67255"><img src="../static/images-xemphim/yoo-in-soo.jpg" alt=""></a></li>
+                            <li><a href="https://xemphim.club/person/yoon-chan-young~27572"><img src="../static/images-xemphim/yoon-chan-young.jpg" alt=""></a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+
+
+        <div class="curtain2"></div>
+    </div>
+</body>
+</html>

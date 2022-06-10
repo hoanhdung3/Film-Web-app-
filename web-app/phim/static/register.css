@@ -1,0 +1,208 @@
+@charset 'UTF-8';
+
+
+body{
+    margin: 0px;
+    background-image: url(/static/images/background-body.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-section{
+    position: absolute;
+    top: 10%;
+    margin-bottom: 10px;
+    
+}
+
+.border-bottom{
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    text-align: center;
+    font-family: monospace;
+    font-size: 25px;
+    padding: 5px 0px;
+}
+
+
+.form-group{
+    padding: 0px 10px;
+    border-radius: 3px;
+    margin: 0;
+}
+
+.form-control-label{
+    color: white;
+   
+}
+
+/* input */
+.form-control-lg{
+    height: 35px;
+    background-color: black;
+    opacity: 0.8;
+}
+
+
+
+
+form{  
+    width: 400px;
+    height: 415px;
+    background-color: black;
+    opacity: 0.8;
+}
+
+.btn-outline-inf{
+    margin: 28px 10px;
+    width: 95%;
+    background-color: black;
+    color: white;
+    border: solid 1px whitesmoke;
+
+}
+
+.btn-outline-inf:hover{
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+h2{
+    color: white;
+    font-family: monospace;
+    font-size: 25px;
+    text-align: center;
+}
+
+.information{
+    color: white;
+    font-family: monospace;
+    font-size: 18px;
+    margin: 15px 15px;
+    
+}
+
+.information-box{ 
+    display: flex;
+    border-bottom: solid 1px rgb(118, 108, 108);
+    margin: 5px 0px;
+    
+}
+
+.information-box:focus {
+    border-bottom: solid 1px rgb(255, 255, 255);
+}
+
+.fa-solid{
+    padding-top: 4px;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.input-eye{
+    cursor: pointer;
+}
+
+.information-box input{
+    background-color: black;
+    border: 0px;
+    flex-grow: 1;
+    outline: 0px;
+    color: white;
+    line-height: 23px;
+    font-size: 16px;
+}
+
+
+
+button{
+    width: 300px;
+    height: 40px;
+    display: block;
+    margin: 25px auto;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    border: solid 1px rgb(122, 120, 120);
+    font-size: 18px;
+    font-family: monospace;
+}
+
+button:hover{
+    border: solid 1px rgb(255, 255, 255);
+}
+
+.nav-button{
+    width: 130px;
+    height: 35px;
+    background-color: black;
+    opacity: 0.8;
+    border: solid 1px rgb(214, 134, 134);
+    position: absolute;
+    bottom: 30px;
+    right: 70px;
+
+    
+}
+
+.nav-button:hover{
+    box-shadow: 0px 0px 3px white;
+}
+
+.button-sign-in{
+    right: 230px;
+}
+
+.home-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 40px;
+    background-color: black;
+    opacity: 0.8;
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    bottom: 50px;
+    right: 100px;
+}
+
+.home-button:hover{
+    text-decoration: none;
+    color: white;
+    box-shadow: 0px 0px 3px white;
+}
+
+
+.sign-in-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 40px;
+    background-color: black;
+    opacity: 0.8;
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    bottom: 50px;
+    right: 200px;
+}
+
+.sign-in-button:hover{
+    text-decoration: none;
+    color: white;
+    box-shadow: 0px 0px 3px white;
+}

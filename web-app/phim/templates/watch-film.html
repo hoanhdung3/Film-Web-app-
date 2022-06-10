@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='watch-film.css')}}">
+    <title>Document</title>
+</head>
+<body>
+    <!-- =====================Header================================ -->
+    <header class="header">
+        <div class="header__logo">
+            <a href="{{url_for('home')}}">Thang7</a>
+             <!-- ========================side-bar======================================= -->
+            <div class="header__side-bar">
+                {% if current_user.is_authenticated %}
+                <div class="user">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <div class="side-bar__username">{{current_user.username}}</div>
+                </div>
+                {% else %}
+                <a class="header__client" href="{{url_for('login')}}">
+                    Đăng nhập
+                </a>
+                {% endif %}
+
+                <ul>
+                    <li><a href="">Kinh di</a></li>
+                    <li><a href="">Hành động - Viễn Tưởng</a></li>
+                    <li><a href="">Tâm lí -  Tình cảm</a></li>
+                    <li><a href="">18+</a></li>
+                    <li><a href="">Anime</a></li>
+                    <li><a href="">Hài</a></li>
+                </ul>
+            </div>
+        </div>
+         <!-- ========================end of side-bar======================================= -->
+
+          <!-- ========================Nav-list======================================= -->
+        <div class="header__nav">
+            <div class="header__nav-search"></div>
+
+            <div class="header__nav-list">
+                <ul>
+                    <li><a href="">Phim hot</a></li>
+                    <li><a href="">Phim lẻ</a></li>
+                    <li><a href="">Phim bộ</a></li>
+                    <li><a href="">Phim mới</a></li>
+                    <li><a href="">About us</a></li>
+                </ul>
+            </div>
+        </div>
+
+         <!-- ========================end of nav-list======================================= -->
+          <!-- ========================user-account======================================= -->
+        {% if current_user.is_authenticated %}
+        <div class="user">
+            <i class="fa-solid fa-circle-user"></i>
+            <div class="username">{{current_user.username}}
+                <ul class="sub-menu">
+                    {% if current_user.username == 'admin'%}
+                    <li><a href="{{ url_for('upload') }}">Upload</a></li>
+                    {% endif %}
+                    <li><a href="{{ url_for('private')}}">Tài khoản của tôi</a></li>
+                    <li><a href="">Trạng thái</a></li>
+                    <li><a href="{{ url_for('logout') }}">Đăng xuất</a></li>
+                </ul>
+            </div>
+        </div>
+        {% else %}
+        <a class="header__client" href="{{url_for('login')}}">
+            Đăng nhập
+        </a>
+        {% endif %}
+    </header>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+         <!-- ========================end of user-account======================================= -->
+       <!-- ========================end of header======================================= -->
+
+    <!-- ==============================content================================ -->
+    <div class="wrapper-content">
+        <iframe width="560" height="315" src="{{ movie.link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    </div>
+    <!-- ==============================End of content=========================== -->
+
+    <a class="home btn" href="{{url_for('home')}}">home</a>
+    <a class="back btn" href="">back</a>
+</body>
+</html>

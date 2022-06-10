@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='app.css')}}" />
+    <script type="text/javascript" src="{{url_for('static', filename='app.js')}}"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
+    <title>Phimthang7.net</title>
+</head>
+<body onload="alreadyloaded()">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}     
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__logo"><a href="{{url_for('home')}}">Thang7</a></div>
+
+            <div class="header__nav">
+                <div class="header__nav-search"></div>
+
+                <div class="header__nav-list">
+                    <ul>
+                        <li><a href="{{ url_for('phimhot') }}">Phim hot</a></li>
+                        <li><a href="{{ url_for('phimle') }}">Phim lẻ</a></li>
+                        <li><a href="{{ url_for('phimbo') }}">Phim bộ</a></li>
+                        <li><a href="{{ url_for('phimmoi') }}">Phim mới</a></li>
+                        <li><a href="">About us</a></li>
+                    </ul>
+                </div>
+            </div>
+            {% if current_user.is_authenticated %}
+            <div class="user">
+                <i class="fa-solid fa-circle-user"></i>
+                <div class="username">{{current_user.username}}
+                    <ul class="sub-menu">
+                        {% if current_user.username == 'admin'%}
+                        <li><a href="{{ url_for('upload') }}">Upload</a></li>
+                        {% endif %}
+                        <li><a href="{{ url_for('private') }}">Tài khoản của tôi</a></li>
+                        <li><a href="">Trạng thái</a></li>
+                        <li><a href="{{ url_for('logout') }}">Đăng xuất</a></li>
+                    </ul>
+                </div>
+            </div>
+            {% else %}
+            <a class="header__client" href="{{url_for('login')}}">
+                Đăng nhập
+            </a>
+            {% endif %}
+        </header>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+        <div class="more">Xem thêm</div>
+
+        <footer>
+            <div class="content">
+                <div class="about-us">
+                    <div class="">We're group 8, and this website's copyright belongs to us</div>
+                    <div class="">Trần Công Nhật Linh, Vũ Thành Chung, Lê Văn Thái(Frontend)</div>
+                    <div class="">Hồ Anh Dũng, Đỗ Minh Ánh, Vũ Việt Đức(Backend)</div>
+                </div>
+
+                <div class="contact-us">
+                    <ul class="social-media">
+                        <li class="facebook"><a href="https://www.facebook.com/profile.php?id=100011609174421"><i class="fa-brands fa-facebook"></i></a></li>
+                        <li class="instagram"><a href="https://www.instagram.com/freakylin20/"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li class="twitter"><a href="https://twitter.com/freakylin20"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li class="youtube"><a href="https://www.youtube.com/channel/UC0e5-A3eSWShw7IIXUgCwpA"><i class="fa-brands fa-youtube"></i></a></li>
+                    </ul>
+
+                    <ul class="email email-1">
+                        <li class="Nhật Linh(L1nberal)">tranlinh1542k@gmail.com</li>
+                        <li class="Anh Dũng(Sana Đáng yêu)">tlbgtn@gmail.com</li>
+                        <li class="Minh Ánh(Sherlock Homes)"></li>
+                       
+                    </ul>
+
+                    <ul class="email emial-2">
+                        <li class="Văn Thái">levanthai2505@gmail.com</li>
+                        <li class="Thành Chung(Thiện nữ)"></li>
+                        <li class="Việt Đức">vuvietduc71220@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
+
